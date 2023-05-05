@@ -9,6 +9,6 @@ RUN npm install
 COPY . /app
 
 ENV NODE_ENV QA
-ENV PORT 3000
-EXPOSE 3000
+ENV PORT 5002
+EXPOSE 5002
 CMD ["npm", "start"]
