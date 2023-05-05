@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  auth:
+    build:
+      context: ./auth/
+    ports:
+      - "5001:5001"
+  bicycle:
+    build:
+      context: ./bicycles/
+    ports:
+      - "5000:3000"
+  frontend:
+    build:
+      context: ./frontend/
+    ports:
+      - "3000:3000"
+  rent:
+    build:
+      context: ./rent/
+    ports:
+      - "5002:5002"
