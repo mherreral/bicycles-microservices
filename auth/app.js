@@ -1,9 +1,8 @@
-require('dotenv').config('./.env');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+require('dotenv').config('./.env');
 var cors = require('cors');
 var session = require('express-session');
 var passport = require('passport');
@@ -33,10 +32,14 @@ passport.serializeUser(function (user, cb) {
 passport.deserializeUser(function (obj, cb) {
     cb(null, obj);
 });
+
+const CLIENT_ID = process.env.CLIENT_ID
+const CLIENT_SECRET = process.env.CLIENT_SECRET
+
 passport.use(new GoogleStrategy({
-    clientID: process.env.GOOGLE_AUTH_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_AUTH_SECRET,
-    callbackURL: "http://localhost:5000/auth/google/callback"
+    clientID: CLIENT_ID,
+    clientSecret: CLIENT_SECRET,
+    callbackURL: "http://localhost:5001/auth/google/callback"
 },
     function (accessToken, refreshToken, profile, done) {
         // here you can create a user in the database if you want to

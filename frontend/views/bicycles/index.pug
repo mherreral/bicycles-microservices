@@ -1,0 +1,37 @@
+extend ../layout
+
+block content
+  header
+    a(href='http://localhost:3000') Home
+    br
+    br
+    a(href='/bicicletas/create') New bicycle
+    table.table
+      thead
+        tr
+          th(scope='col') # ID
+          th(scope='col') Color
+          th(scope='col') Model
+          th(scope='col') Location
+          th(scope='col') Rented
+      tbody
+        each bici in bicycles
+          tr
+            td(scope='row')=bici._id
+            td=bici.color
+            td=bici.model
+            td=bici.location
+            td=bici.rent_status
+            td
+              a(href='/bicicletas/'+bici._id+'/show') Show
+            td
+              a(href='/bicicletas/'+bici._id+'/update') Edit
+            if !bici.rent_status
+              td 
+                form.inline(method='post' action='/bicicletas/'+bici._id+'/rent')
+                  input(type='hidden' name='bici' value=bici)
+                  button.link-button(type='submit' name='submit_param' value='submit_value' class='.btn')='Rent'
+            td
+              form.inline(method='post' action='/bicicletas/'+bici._id+'/delete')
+                input(type='hidden' name='id' value=bici._id)
+                button.link-button(type='submit' name='submit_param' value='submit_value' class='.btn')='Delete'

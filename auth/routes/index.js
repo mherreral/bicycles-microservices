@@ -3,12 +3,11 @@ var router = express.Router();
 var passport = require('passport');
 var jwt = require('jsonwebtoken');
 
-router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Express' });
-});
 const TOKEN_SECRET = 'SECRET';
+
 router.get('/auth/google',
   passport.authenticate('google', { scope: ['profile', 'email'] }));
+
 router.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/error' }),
   function (req, res) {
@@ -16,7 +15,8 @@ router.get('/auth/google/callback',
       expiresIn: 60 * 60,
     });
     res.cookie('auth', token, { httpOnly: true });
-    res.redirect('http://localhost:3000/');
+    console.log(token)
+    res.status(200).json("User Authenticated");
   });
 
 module.exports = router;

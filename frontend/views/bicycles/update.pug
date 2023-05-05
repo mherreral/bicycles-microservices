@@ -1,0 +1,35 @@
+extends ../layout
+
+block content
+  a(href='/bicicletas') Back
+  br
+  br
+  br
+  h1 Update bicycle # #{bici._id}
+  br
+  br
+  form(action='/bicicletas/:id/update' method='post')
+    input(type='hidden' name='id', value=bici._id)
+    br
+    label(for='color') Color:
+    select(name='color' id='', selected=bici.color ,required)
+      each val in ['--select--','White' , 'Black' , 'Red','Greeen', 'Purple', "Blue"]
+        option=val
+    br
+    label(for='model') Model:
+    select(name='model' id='', required)
+      each val in ['--select--','Road' , 'Cross' , 'Mountain','Turism']
+        option=val
+    br
+    label(for='lat') Latitude:
+    input#id(type='text' name='lat', value=bici.location[0], required)
+    br
+    label(for='lng') Length:
+    input#id(type='text' name='lng', value=bici.location[1], required)
+    br
+    br
+    label(for='rented') Rented:
+    input#id(type='text' name='rented', value=bici.rent_status, required)
+    br
+    br
+    input.btn(type='submit' name='OK' value='Submit')

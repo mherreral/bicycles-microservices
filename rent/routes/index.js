@@ -8,19 +8,6 @@ router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-// router.get('/greetme', (req, res, next) => {
-//   passport.authenticate('jwt', { session: false }, (err, user, info) => {
-//     if (err || !user) {
-//       console.log('error is', err);
-//       res.status(500).send('An error has occurred, we cannot greet you at the moment.');
-//     }
-//     else {
-//       res.send({ success: true, fullName: `${user.name.givenName} ${user.name.familyName}` })
-//     }
-//   })(req, res, next);
-// });
-
-router.get("/list", rentController.list);
-router.get("/greetme", rentController.greetme);
+router.post("/api/v1/:id/rent", rentController.rentBicycle);
 
 module.exports = router;

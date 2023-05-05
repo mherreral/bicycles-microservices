@@ -1,0 +1,18 @@
+//-
+extends layout
+
+block content
+  div.container
+    div.row
+      div.col-md-4.offset-md-4
+        div.card
+          div.card-body
+            div.text-center.mb-3
+              h3 Login
+                a(href='http://localhost:3100/google-login') Sign in with Google
+                a(href='http://localhost:5001/auth/google') Sign in with Google 2
+                br
+
+    a(href="/logout") Sign out
+
+    script(src="/javascripts/auth.js")

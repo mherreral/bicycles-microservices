@@ -1,0 +1,31 @@
+extends ../layout
+
+block content
+  a(href='/bicicletas') Volver
+  br
+  br
+  br
+  h1 Nueva bicicleta
+  br
+  br
+  form(action='/bicicletas/create' method='post')
+    label(for='color') Color:
+    select(name='color' id='', required)
+      each val in ['--select--','White' , 'Black' , 'Red','Greeen', 'Purple', "Blue"]
+        option=val
+    //input#id(type='text' name='color', required)
+    br
+    label(for='model') Modelo:
+    select(name='model' id='', required)
+      each val in ['--select--','Road' , 'Cross' , 'Mountain','Turism']
+        option=val
+    //input#id(type='text' name='model',required)
+    br
+    label(for='lat') Latitude:
+    input#id(type='text' name='lat',required)
+    br
+    label(for='lng') Length:
+    input#id(type='text' name='lng', required)
+    br
+    br
+    input.btn(type='submit' name='OK' )

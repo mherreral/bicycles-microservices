@@ -25,6 +25,7 @@ exports.list = function (req, res) {
 };
 
 exports.update = function (req, res) {
+    console.log("TESTINGGGG: ", req.body, req.params.id);
     Bicycle.findByIdAndUpdate(req.params.id, req.body).then((bicycle) => {
         if (bicycle) {
             res.status(200).json('Bicycle updated Successfully!')
@@ -48,5 +49,31 @@ exports.delete = function (req, res) {
     }).catch((err) => {
         res.status(500).send('Internal Server Error!');
         console.log(err);
+    });
+};
+
+exports.show = function (req, res) {
+    Bicycle.findById(req.params.id).then((bicycle) => {
+        console.log(bicycle)
+        if (bicycle != null) {
+            res.status(200).json(bicycle)
+        } else {
+            res.status(404).send('Bicycle Not found!');
+        }
+    }).catch((err) => {
+        res.status(500).send('Internal Server Error!');
+        console.log(err);
+    });
+};
+
+exports.get_available_bicycles = function (req, res) {
+    Bicycle.find({rent_status: false}).then((bicycles) => {
+        if (bicycles.length !== 0) {
+            res.status(200).json(bicycles)
+        } else {
+            res.status(404).send('Bicycles not found');
+        }
+    }).catch((err) => {
+        res.status(500).send('Internal Server Error!');
     });
 };
