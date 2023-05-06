@@ -1,11 +1,8 @@
 extend ../layout
 
 block content
-  header
-    a(href='http://localhost:3000') Home
     br
     br
-    a(href='/bicicletas/create') New bicycle
     table.table
       thead
         tr
@@ -23,9 +20,9 @@ block content
             td=bici.location
             td=bici.rent_status
             td
-              a(href='/bicicletas/'+bici._id+'/show') Show
+              a(href='/bicicletas/'+bici._id+'/show' class=".btn") Show
             td
-              a(href='/bicicletas/'+bici._id+'/update') Edit
+              a(href='/bicicletas/'+bici._id+'/update' class=".btn") Edit
             if !bici.rent_status
               td 
                 form.inline(method='post' action='/bicicletas/'+bici._id+'/rent')

@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var jwt = require('jsonwebtoken');
+require('dotenv').config('./.env');
 
 const TOKEN_SECRET = 'SECRET';
 
@@ -16,7 +17,8 @@ router.get('/auth/google/callback',
     });
     res.cookie('auth', token, { httpOnly: true });
     console.log(token)
-    res.status(200).json("User Authenticated");
+    //res.status(200).json("You are now authenticated");
+    res.redirect(200, process.env.FRONTEND_MS)
   });
 
 module.exports = router;

@@ -13,8 +13,8 @@ $.ajax({
         for (let i = 0; i < results.length; i++) {
             console.log(results[i]._id);
             L.marker(results[i].location, {
-                title: "Bicicleta Nº: " + results[i]._id + " Modelo: " + results[i].model
-            }).addTo(map).bindPopup("Bicicleta Nº: " + results[i]._id + " Modelo: " + results[i].model)
+                title: "Bicycle: " + results[i]._id
+            }).addTo(map).bindPopup("Bicycle: " + results[i]._id)
         }
     }
 });

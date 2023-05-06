@@ -10,7 +10,7 @@ services:
     build:
       context: ./bicycles/
     ports:
-      - "5000:3000"
+      - "5000:5000"
   frontend:
     build:
       context: ./frontend/

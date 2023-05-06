@@ -1,6 +1,26 @@
+doctype html
 html
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/styles.css')
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    title Bicycles
+    link(rel="stylesheet", href="/stylesheets/style.css")
+    // Map
+    link(rel='stylesheet' href='https://unpkg.com/leaflet@1.9.3/dist/leaflet.css' integrity='sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=' crossorigin='')
+    script(src='https://unpkg.com/leaflet@1.9.3/dist/leaflet.js' integrity='sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=' crossorigin='')
   body
-    block content
+    header
+      h1 Bicycles
+      nav
+        ul
+          li
+            a(href="http://localhost:3000/bicicletas") Bicycles list
+          li
+            a(href="/bicicletas/create") Create bicycle
+    main
+      block content
+    .container.px-4.px-lg-5
+      #map
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        script(src='/javascripts/map.js')
+    script(src='/javascripts/map.js')

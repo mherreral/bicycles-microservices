@@ -1,12 +1,9 @@
 extend ../layout
 
 block content
-
-  a(href='http://localhost:3000/bicicletas') Home
+  h2 Bicycle # #{bici._id}
   br
-  h1 Bicicleta # #{bici.id}
-  br
-  h2 Datos de la bicicleta
+  h3 Bicycle data
   br
   table.table
     thead
@@ -24,5 +21,5 @@ block content
         td=bici.location
         td=bici.rent_status
         td
-          a(href='/bicicletas/'+bici._id+'/update') editar
+          a(href='/bicicletas/'+bici._id+'/update') Edit
         td
